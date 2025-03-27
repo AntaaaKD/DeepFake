@@ -1,1 +1,2 @@
+# DEEP FAKE Detection Project
 Les deepfakes et autres manipulations d’images représentent une menace croissante pour la crédibilité de l’information, notamment dans les domaines des médias, de la politique, et de la cybersécurité. Avec l’avènement de l’IA générative, la création de fausses images est devenue accessible, rendant essentielle la détection automatisée. Ce projet s’inscrit dans une problématique de classification binaire d’images (réelles vs. falsifiées), tout en intégrant une dimension de sécurité IA via la gestion des attaques par évasion (adversarial attacks).
