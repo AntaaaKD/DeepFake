@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat de l'Image Adversariale</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body class="recognition-page">
+    <div class="container">
+
+        <a href="{{ url_for('deepfake_detection') }}" class="back-link">← Retour</a>
+        <h1>🎭 Originale vs Adversariale</h1>
+
+        <!-- Conteneur pour les images côte à côte -->
+        <div class="image-container1">
+            <!-- Image Originale -->
+            <div class="image-wrapper">
+                <h2>Originale</h2>
+                {% if original %}
+                    <img src="{{ url_for('static', filename=original) }}" alt="Image Originale">
+                {% else %}
+                    <p>Aucune image originale disponible.</p>
+                {% endif %}
+            </div>
+
+            <!-- Image Adversariale -->
+            <div class="image-wrapper">
+                <h2>Adversarial</h2>
+                {% if adversarial %}
+                    <img src="{{ url_for('static', filename=adversarial) }}" alt="Image Adversariale">
+                {% else %}
+                    <p>Aucune image adversariale disponible.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Bouton pour générer une nouvelle image -->
+        <a class="new-analysis" href="{{ url_for('adversarial') }}">Nouvelle image Contradictoire ?</a>
+    {% if file_path %}
+
+        {% endif %}
+        {% if adversarial %}
+            <button onclick="detectAdversarial('{{ adversarial }}')" style="margin-top:10px;">
+                Détecter l'image contradictoire🔐
+            </button>
+{#            <button onclick="defenseDetection('{{ adversarial }}')" style="margin-top:10px;">#}
+{#                    Analyser avec Défense 🛡️#}
+{#                </button>#}
+        {% endif %}
+
+    <script>
+         // Fonction pour rediriger vers la page de nouvelle analyse
+        function resetUpload() {
+            window.location.href = "{{ url_for('deepfake_detection') }}";
+        }
+
+        // Fonction pour rediriger vers la génération d'image adversariale
+        function generateAdversarial(filePath) {
+            window.location.href = "{{ url_for('adversarial_from_result') }}?file_path=" + filePath;
+        }
+
+        // Fonction pour rediriger vers la détection de l'image adversaire
+        function detectAdversarial(filePath) {
+            window.location.href = "{{ url_for('detect_adversarial') }}?file_path=" + filePath;
+        }
+          function defenseDetection(filePath) {
+            window.location.href = "{{ url_for('defense_from_result') }}?file_path=" + encodeURIComponent(filePath);
+        }
+    </script>
+    </div>
+</body>
+</html>

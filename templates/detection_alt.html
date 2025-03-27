@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvelle Détection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recognition.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Nouveau Système de Détection</h1>
+        <form action="/new_detect" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Analyser</button>
+        </form>
+    </div>
+</body>
+</html>

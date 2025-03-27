@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détection Défensive</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='recognition.css') }}">
+    <style>
+.alert-error {
+    color: #dc3545;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+</style>
+</head>
+<body class="recognition-page">
+  <div class="container">
+     <a href="{{ url_for('index') }}" class="back-link">← Retour</a>
+    <h1>🛡️ Analyse Défensive</h1>
+    <p>Envoyez une image contradictoire et notre modèle de défense dira si elle est réelle ou deepfake.</p>
+
+    {% if error %}
+    <div class="alert-error">
+        <strong>Erreur :</strong> {{ error }}
+        {% if 'invalid' in error|lower %}
+            <p>Veuillez uploader une image valide (JPEG, PNG)</p>
+        {% endif %}
+    </div>
+{% endif %}
+
+    <form action="{{ url_for('defense') }}" method="post" enctype="multipart/form-data">
+  <label for="file" id="upload-area" class="upload-area">
+    <span class="upload-icon">🖼️</span>
+    <span class="upload-text">Sélectionnez une image</span>
+    <input type="file" name="file" id="file" accept="image/*" required>
+  </label>
+
+  <!-- Zone de prévisualisation cachée au début -->
+  <div id="preview" style="display: none;">
+    <img id="preview-image" src="#" alt="Preview" style="max-width: 100%; border-radius: 10px;" />
+  </div>
+
+  <button type="submit">Analyser 🔍</button>
+</form>
+
+  </div>
+  <script>
+document.getElementById('file').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  // Vérification du type et taille
+  if (!file.type.match('image.*')) {
+    alert('Seules les images sont acceptées');
+    return;
+  }
+  if (file.size > 5 * 1024 * 1024) { // 5MB max
+    alert('Fichier trop volumineux (max 5MB)');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('preview-image').src = e.target.result;
+    document.getElementById('preview').style.display = 'block';
+    document.getElementById('upload-area').style.display = 'none';
+  };
+  reader.onerror = function() {
+    alert("Erreur de lecture du fichier");
+  };
+  reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>

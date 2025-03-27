@@ -1,0 +1,325 @@
+/* Reset de base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style général pour le body */
+/*body {*/
+/*  font-family: 'Poppins', sans-serif;*/
+/*  background: #f4f4f9;*/
+/*  color: #333;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  min-height: 100vh;*/
+/*}*/
+
+/* Styles spécifiques à la page recognition */
+html, body {
+    height: 100%; /* Hauteur de la page = hauteur de la fenêtre */
+    margin: 0; /* Supprimer les marges par défaut */
+    /*overflow: hidden; !* Masquer les barres de défilement *!*/
+
+}
+
+
+.recognition-page {
+  background: linear-gradient(135deg, #ffffff, #f8f8f8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #333;
+}
+
+.recognition-page .container {
+  background: rgba(92, 120, 243, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.recognition-page h1 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.recognition-page p {
+  font-size: 1em;
+  margin-bottom: 25px;
+  color: #000000;
+}
+
+.recognition-page .error {
+  background: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  color: #ff0000;
+}
+
+.recognition-page .upload-area {
+  display: block;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px dashed #fff;
+  padding: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.recognition-page .upload-area:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.recognition-page .upload-icon {
+  font-size: 3em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.recognition-page .upload-text {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #070707;
+}
+
+.recognition-page input[type="file"] {
+  display: none;
+}
+
+.recognition-page button {
+  background: linear-gradient(135deg, #7eb2ff, #758cff);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recognition-page button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.recognition-page .upload-area.highlight {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #ff7eb3;
+}
+
+
+
+/* Conteneur principal */
+.result-container, .result-container1 {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.image-container1 {
+    display: flex;
+    justify-content: center; /* Centre les images horizontalement */
+    align-items: stretch; /* Centre les images verticalement */
+    gap: 20px; /* Espace entre les images */
+    margin-bottom: 20px; /* Espace en bas du conteneur */
+}
+
+.image-wrapper {
+    flex: 1; /* Permet aux images de prendre un espace égal */
+    max-width: 80%; /* Limite la largeur de chaque image à 45% du conteneur */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le texte sous les images */
+}
+
+
+/* Titre */
+.result-container,.result-container1 h1 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+/* Texte résultat */
+.result-container,.result-container1 p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Wrapper pour l'image */
+
+
+.image-wrapper img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: auto;
+    width: 100%; /* Remplit le conteneur */
+    max-height: 300px; /* Limite la hauteur maximale des images */
+    object-fit: cover;
+}
+
+.image-wrapper1 img {
+     /* L'image ne dépassera pas la largeur de son conteneur */
+    height: auto;    /* Conserve le ratio d'aspect */
+    display: block;  /* Évite les espaces indésirables sous l'image */
+    margin: 0 auto;  /* Centre l'image horizontalement */
+    object-fit: contain;
+    max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Remplit le conteneur */
+    max-height: 300px; /* Limite la hauteur maximale des images */
+
+}
+
+/* Lien pour une nouvelle analyse */
+.new-analysis {
+  display: inline-block;
+  margin-top: 30px;
+  background: #3c618c;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.new-analysis:hover {
+  background: #73b6cd;
+}
+/* Limiter la largeur maximale des images */
+
+
+/* Optionnel : Ajouter une largeur maximale pour les images */
+.image-wrapper h2 {
+    margin-top: 10px; /* Espace entre l'image et le titre */
+    font-size: 1.2em; /* Taille du texte */
+    color: #444; /* Couleur du texte */
+}
+
+.new-analysis1 {
+    background: linear-gradient(135deg, #7eb2ff, #758cff);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .new-analysis1:hover {
+        background: rgba(255, 255, 255, 0.5);
+        border-color: #ff7eb3;
+    }
+
+    /* Styles spécifiques à la page recognition */
+
+    .recognition-page {
+        background: linear-gradient(135deg, #ffffff, #f8f8f8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #333;
+    }
+
+    .recognition-page .container {
+        background: rgba(92, 120, 243, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .recognition-page h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+        color: #000000;
+    }
+
+    .recognition-page p {
+        font-size: 1em;
+        margin-bottom: 25px;
+        color: #000000;
+    }
+
+    .recognition-page .error {
+        background: rgba(255, 0, 0, 0.2);
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        color: #ff0000;
+    }
+
+    .recognition-page .upload-area {
+        display: block;
+        background: rgba(255, 255, 255, 0.3);
+        border: 2px dashed #fff;
+        padding: 30px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+    .recognition-page .upload-area:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .recognition-page .upload-icon {
+        font-size: 3em;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .recognition-page .upload-text {
+        font-size: 1.1em;
+        font-weight: 500;
+        color: #070707;
+    }
+
+    .recognition-page input[type="file"] {
+        display: none;
+    }
+
+    .recognition-page button {
+        background: linear-gradient(135deg, #7eb2ff, #758cff);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        padding: 15px 30px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .recognition-page button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .recognition-page .upload-area.highlight {
+        background: rgba(255, 255, 255, 0.5);
+        border-color: #ff7eb3;
+    }
+}
+

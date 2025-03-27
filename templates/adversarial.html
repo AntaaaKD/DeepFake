@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Génération d'Image Adversariale</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recognition.css') }}">
+    <style>
+        #preview-image {
+            max-width: 100%; /* L'image ne dépasse pas le conteneur */
+            max-height: 200px; /* Hauteur maximale */
+            display: block;
+            margin: auto;
+            border-radius: 8px;
+            object-fit: contain; /* Évite l'étirement */
+        }
+        #upload-form.hidden {
+            display: none; /* Cache la zone d'upload après l'upload */
+        }
+    </style>
+</head>
+<body class="recognition-page">
+
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="back-link">← Retour</a>
+        <h1>⚠️ Génération d'Image Adversariale</h1>
+        <p>Sélectionnez une image pour générer une version adversariale.</p>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('adversarial') }}" method="post" enctype="multipart/form-data" id="upload-form">
+            <label for="file" class="upload-area" id="upload-area">
+                <span class="upload-icon">📂</span>
+                <span class="upload-text">Sélectionnez une image</span>
+                <input type="file" name="file" id="file" accept="image/*" required>
+            </label>
+
+        </form>
+
+        <div id="preview-container" style="display:none; margin-top: 10px;">
+            <img id="preview-image" src="#" alt="Prévisualisation de l'image">
+            <button onclick="resetUpload()" style="margin-top:10px;">Changer d'image</button>
+            <button style="margin-top:10px" type="submit" form="upload-form">Générer Adversarial ⚡</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview-image').src = e.target.result;
+                    document.getElementById('preview-container').style.display = 'block';
+                    document.getElementById('upload-form').classList.add('hidden'); // Cache la zone d'upload
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function resetUpload() {
+            document.getElementById('file').value = ""; // Réinitialise l'input file
+            document.getElementById('preview-container').style.display = 'none'; // Cache la prévisualisation
+            document.getElementById('upload-form').classList.remove('hidden'); // Réaffiche le formulaire
+        }
+    </script>
+</body>
+</html>

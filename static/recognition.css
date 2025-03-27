@@ -1,0 +1,100 @@
+/* Styles spécifiques à la page recognition */
+html, body {
+    height: 100vh; /* Hauteur de la page = hauteur de la fenêtre */
+    margin: 0; /* Supprimer les marges par défaut */
+    overflow: hidden; /* Masquer les barres de défilement */
+}
+
+
+.recognition-page {
+  background: linear-gradient(135deg, #ffffff, #f8f8f8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #333;
+}
+
+.recognition-page .container {
+  background: rgba(92, 120, 243, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.recognition-page h1 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.recognition-page p {
+  font-size: 1em;
+  margin-bottom: 25px;
+  color: #000000;
+}
+
+.recognition-page .error {
+  background: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  color: #ff0000;
+}
+
+.recognition-page .upload-area {
+  display: block;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px dashed #fff;
+  padding: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.recognition-page .upload-area:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.recognition-page .upload-icon {
+  font-size: 3em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.recognition-page .upload-text {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #070707;
+}
+
+.recognition-page input[type="file"] {
+  display: none;
+}
+
+.recognition-page button {
+  background: linear-gradient(135deg, #7eb2ff, #758cff);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recognition-page button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.recognition-page .upload-area.highlight {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #ff7eb3;
+}
+

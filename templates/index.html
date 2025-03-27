@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <title>Home</title>
+</head>
+<body>
+    {% if username %}
+        <div class="page-container">
+            <div class="content">
+                <h1>Welcome <span class="gradiant-text">{{username}}</span>!</h1>
+                <div class="menu-container1">
+                    <p>On assiste à une révolution incroyable de l’IA, où les lignes entre le réel et le virtuel deviennent de plus en plus floues.
+                        <br>Aujourd’hui, il est plus facile que jamais de créer des images et des vidéos hyperréalistes… mais aussi de duper.
+                        <br>Les DeepFakes sont partout : dans les réseaux sociaux, les actualités, et même dans nos conversations.
+                        <b><br><br>Mais pas de panique ! Nous sommes là pour démêler le vrai du faux.</b>
+                        <br><br>
+                        Parce qu’en matière de vérité, chaque détail compte.
+                        <br>Alors, prêt à percer les secrets des DeepFakes ? C’est par ici que ça se passe ! 🕵️‍♂️✨
+                    </p>
+                </div><br>
+                <p><b>Que souhaitez-vous faire ?</b></p>
+                <div class="menu-container">
+                    <a class="text-link1" href="/deepfake">Détection Deep Fake</a>
+                    <a class="text-link1" href="/adversarial">Génération d'Images Adversariales</a>
+                    <a class="text-link1" href="/defense">Défense Contre Attaques</a>
+                </div>
+            </div>
+        <a class="logout" href="/logout">Logout</a>
+        </div>
+
+    {% endif %}
+</body>
+</html>
