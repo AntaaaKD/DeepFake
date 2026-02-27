@@ -62,7 +62,7 @@ pandas
 seaborn
 sklearn
 tensorflow
-tensorflow==2.15.1
+tensorflow-cpu==2.15.0
 transformers
 torch~=2.6.0
 torchvision~=0.21.0
